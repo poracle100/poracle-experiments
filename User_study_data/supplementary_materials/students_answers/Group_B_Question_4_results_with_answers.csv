@@ -1,0 +1,49 @@
+method1,,,,
+Points received,Minutes,Seconds,,Ans
+,,,,
+,,,,
+0,4,50,Answered:,"root == Math.sqrt(f), true"
+0,7,10,Answered:,"(f(min) > 0 && f(max) > 0 && f(initial) > 0) || (f(min) < 0 && f(max) < 0 && f(initial) < 0), !(f(min) > 0 && f(max) > 0 && f(initial) > 0) && !(f(min) < 0 && f(max) < 0 && f(initial) < 0)"
+0,12,1,Answered:,"root<=1&&root>=1,(f.value(min)<0&&(f.value(min)<0&&(f.value(min)<0"
+0,5,49,Answered:,"(min*max*initial) <=0 , (min*max*initial) > 0"
+0.5,7,46,Answered:,"root>=f.value(min)&&root<=f.value(max), f.value(min)>0&&f.value(max)>0&&f.value(initial)>0||f.value(max)<0&&f.value(min)<0&&f.value(initial)<0"
+0,3,8,Answered:,"root >= 0, root <= 1"
+0,10,23,Answered:,"define f(min) = x, f(max) = y, f(initial) = z; answer: !((x > 0 && y > 0 && z > 0) || (x<0 && y< 0 && z < 0))"
+0,11,42,Answered:,"f.value(@) has different sign, f.value(min) && f.value(max) && f.value(initlai) || !f.value(min) && !f.value(max) && !f.value(initial)"
+0,11,57,Answered:,"f(min) != f(max) || f(min) != f(initial) || f(initial) != f(max),f(min) == f(max) && f(max)==f(initial)"
+0,12,3,Answered:,"root,(f(min)>0 && f(max)>0 && f(initial)>0) && (f(max)&&f(min)<0&&f(initial)<0)"
+0,12,2,Answered:,"(SinFunction(min)>0&&SinFunction(max)>0&&SinFunction(initial)>0)||(SinFunction(min)<0&&SinFunction(max)<0&&SinFunction(initial)<0),root0"
+0,11,10,Answered:,"!(f.value(min)>0 == f.value(max)>0 == f.value(initial)>0) , !(f.value(min)<0 == f.value(max)<0 == f.value(initial)<00)"
+1,10,9,Answered:,"!((f(min) > 0 && f(max) > 0 && f(initial) >0) || (f(min) < 0 && f(max) < 0 && f(initial) < 0)),(f(min) > 0 && f(max) > 0 && f(initial) >0) || (f(min) < 0 && f(max) < 0 && f(initial) < 0)"
+0,,,Answered:,
+0,8,52,Answered:,"(min < 0 && max < 0 && initial < 0) || (min > 0 && max > 0 && initial > 0), false"
+0,3,14,Answered:,min <= initial && initial <= max
+0,8,56,Answered:,"min < root && root < max, true"
+1,12,1,Answered:,"root >= min && root <= max, (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+0,0,14,Answered:,x
+0,11,45,Answered:,x
+0,12,2,Answered:,"f.value(min)*f.value(max)>0&&f.value(min)*f.value(initial)>0&&f.value(max)*f.value(initial)),"
+0,11,50,Answered:,"f.value(min) * f.value(max) < 0 || f.value(max) * f.value(initial) < 0 || f.value(initial) * f.value(min) < 0, f.value(min) * f.value(max) >= 0 && f.value(max) * f.value(initial) >= 0 && f.value(initial) * f.value(min) >= 0"
+0,3,14,Answered:,f.value(min)>0 && f.value(max)>0&&f.value(initial)>0
+0,,,Answered:,
+0.5,8,8,Answered:,"!(((f(min) > 0) && (f(max) > 0) && (f(initial) >0))||((f(min) < 0) && (f(max) < 0) && (f(initial) < 0))), ((f(min) > 0) && (f(max) > 0) && (f(initial) >0))||((f(min) < 0) && (f(max) < 0) && (f(initial) < 0))"
+0,5,52,Answered:,"f.value(root) == 0 , f.value(-root)==0"
+0,12,2,Answered:,No answer
+0,12,1,Answered:,"min * max < 0 || min * initial < 0 || max * initial < 0, max < 0 && min < 0 && initial < 0 ||"
+0,8,40,Answered:,"f.value(min)*f.value(max)*f.value(initial)<0,f.value(min)>0"
+0,5,43,Answered:,"root>0,true"
+0,,,Answered:,
+0,9,28,Answered:,"f.value(min) >0 && f.value(max) > 0 && f.value(initial) > 0 || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0) , true"
+0,9,13,Answered:,"!((min > 0 && max > 0 && initial > 0)||(min < 0 && max < 0 && initial < 0)), ((min > 0 && max > 0 && initial > 0)||(min < 0 && max < 0 && initial < 0))"
+0,4,52,Answered:,(f(min) > 0 && f(max) > 0 && f(initial) > 0) || (f(min) < 0 && f(max) < 0 && f(initial) < 0)
+0,11,51,Answered:,"(min>=0 && max>=0 && initial>=0) || (min<0 && max<0 && initial<0) , !((min>=0 && max>=0 && initial>=0) || (min<0 && max<0 && initial<0))"
+0,2,4,Answered:,true
+0,8,51,Answered:,No answer
+0,4,13,Answered:,"root >= min, root <= max"
+0,4,4,Answered:,f.value(min)>0&&f.value(mmax)>0&&f.value(initial)>0
+0,8,47,Answered:,"f(min) < 0, f(max) < 0, f(initial) < 0"
+0.5,9,36,Answered:,"root != null, (f.value(min) > 0 && f.value(min) >0 && f.value(initial) >0) || (f.value(min) < 0 && f.value(min) < 0 && f.value(initial) < 0)"
+0.5,4,58,Answered:,"f.value(root) == 0, (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+0,9,34,Answered:,"((min>=0) != (max>=0)) || ((min>=0) != (initial>=0)) || ((max>=0) != (initial>=0)), ((min>=0) == (max>=0)) && ((min>=0) == (initial>=0))"
+0,6,3,Answered:,"root == f.value(x), False"
+0,0,46,Answered:,brentSolver.solve()

@@ -1,0 +1,49 @@
+method2,,,,
+,,,,
+Points received,Minutes,Seconds,,Ans
+,,,,
+,,,,
+0,2,56,Answered:,true
+0,8,14,Answered:,true
+1,5,46,Answered:,dist.getNumericalMean()>=0
+1,6,56,Answered:,dist.getNumericalMean()>0
+1,5,11,Answered:,sampleSize > 0 && dist.getNumericalMean() >= 0
+0,11,22,Answered:,1 - (N - m)/dist.getNumericalMean()
+0,11,14,Answered:,sample < 0
+0,7,54,Answered:,(dist.getNumericalMean(sampleSize) >= 0) && (dist.getNumericalMean(popSize) >= 0) && (n > 0)
+0,5,10,Answered:,(sampleSize > 0 && n > 0)
+1,6,28,Answered:,dist.getNumericalMean() => 0
+0,12,2,Answered:,dist.getNumericMean()<0
+1,6,16,Answered:,dist.getNumericalMean() >= 0
+1,2,21,Answered:,dist.getNumericalMean() >= 0
+1,7,33,Answered:,dist.getNumericalMean() >= 0
+1,4,31,Answered:,dist.getNumericaMean()>=0
+1,7,18,Answered:,dist.getNumericalMean(p)>=0
+1,6,42,Answered:,dist.getNumericalMean() > 0
+0,11,19,Answered:,true
+1,6,14,Answered:,dist.getNumericalMean() >= 0
+1,3,58,Answered:,dist.getNumericalMean() >= 0
+0,4,38,Answered:,true
+0,1,28,Answered:,False
+0,5,11,Answered:,dist.getNumericalMean()
+1,6,53,Answered:,dist.getNumericalMean()>=0
+0,8,14,Answered:,dist.inverseCumulativeProbability(p)>0
+0,,,Answered:,
+0,,,Answered:,
+0,7,33,Answered:,false
+0,7,12,Answered:,true
+0,4,48,Answered:,popSize >= sampleSize || sampleSize > 0
+0,3,18,Answered:,(dist.inverseCumulativeProbability(sample) >= p)
+1,7,14,Answered:,dist.getNumericalMean() >= 0
+1,3,21,Answered:,dist.getNumericalMean()>=0
+0,9,25,Answered:,True
+0,6,19,Answered:,sampleSize <= popSize && p > 0 && p <= 1
+0,0,17,Answered:,true
+0,3,35,Answered:,true
+0,3,1,Answered:,true
+1,5,22,Answered:,dist.getNumericalMean() >= 0
+0,4,29,Answered:,true
+0,5,22,Answered:,sample
+0,4,0,Answered:,
+1,3,16,Answered:,dist.getNumericalMean() >= 0
+0,5,4,Answered:,true

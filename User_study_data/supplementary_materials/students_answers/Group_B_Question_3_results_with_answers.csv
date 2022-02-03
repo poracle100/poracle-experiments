@@ -1,0 +1,50 @@
+method2,,,,
+,,,,
+Points received,Minutes,Seconds,,Ans
+,,,,
+,,,,
+0,4,21,Answered:,!Double.isNaN(w.getImaginary()) && !Double.isNaN(w.getReal()) && w.getReal() == (x.getReal()+z.getReal()) && w.getImaginary() == (x.getImaginary() + z.getImaginary())
+0,3,10,Answered:,b + d != 0
+1,6,28,Answered:,true
+1,5,12,Answered:,true
+0.5,4,53,Answered:,w.getReal()==(a+c) && w.getImaginary()==(b+d)
+1,1,32,Answered:,true
+0,6,34,Answered:,w.getReal() != Double.NaN && w.getImaginary() != Double.Nan
+1,3,19,Answered:,true
+0.5,6,11,Answered:,(a+c != Double.NaN) && (b+d != Double.NaN)
+1,2,54,Answered:,true
+1,3,28,Answered:,true
+0,7,4,Answered:,w.getReal() != Double.NaN && w.getImaginary() != Double.NaN
+1,10,4,Answered:,True
+0,,,Answered:,
+0,5,20,Answered:,!(Double.isNaN(w.getReal())) && !(Double.isNaN(w.getImaginary()))
+0,3,18,Answered:,w != Double.NaN && w.getReal() != Double.NaN && w.getImaginary() != Double.NaN
+1,2,16,Answered:,true
+1,4,55,Answered:,true
+0,0,14,Answered:,z
+0,5,27,Answered:,!Double.isNaN(w.getReal()) && !Double.isNaN(w.Imaginary())
+0,5,42,Answered:,"Double[]{a+c, b+d}"
+0.5,4,55,Answered:,(w.getReal() == x.getReal() + z.getReal()) && (w.getImaginary() == x.getImaginary() + z.getImaginary())
+1,4,23,Answered:,True
+0,,,Answered:,
+1,2,37,Answered:,true
+0,3,5,Answered:,"Double[]{x.getReal()+y.getReal(), x.getImaginary()+y.getImaginary()}"
+0,6,33,Answered:,w.getReal()!=Double.Nan && w.getImaginary()!=Double.Nan
+0,8,1,Answered:,Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary())
+0.5,6,8,Answered:,(w.getReal()==(a+c))&&(w.getImaginary()==(b+d))
+0,4,4,Answered:,"Double[]{(a+c),(b+d)}"
+0,,,Answered:,No answer
+0,8,2,Answered:,w.getReal() != Double.NaN && w.getImaginary() != Double.NaN
+1,5,59,Answered:,true
+0,8,13,Answered:,(w.getReal()>=0.0) && (w.getImaginary()>=0.0)
+0,4,24,Answered:,(w.getReal() == a+c) && (w.getImaginary() == b+d)
+0,4,6,Answered:,(w.getReal() == a + c) && (w.getImaginary() == b + d)
+1,3,50,Answered:,true
+0,2,13,Answered:,"Double[]{ x.getReal() + z.getReal(), x.getImaginary() + z.getImaginary()}"
+0,6,26,Answered:,Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary())
+1,1,6,Answered:,true
+0,2,53,Answered:,(w.getReal() == a + c) && (w.getImaginary() == b + d)
+1,4,51,Answered:,true
+1,2,14,Answered:,true
+1,9,1,Answered:,true
+0,0,31,Answered:,Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary())

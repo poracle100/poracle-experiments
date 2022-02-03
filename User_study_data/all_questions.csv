@@ -1,0 +1,777 @@
+"Question Type: essay","Parent Category",Category,"Correct Feedback","Incorrect Feedback",Points,Question
+essay,"Generic Parent",Generic,,,0,"What is your major?"
+essay,"Generic Parent",Generic,,,0,"What programming language are you most skillful at?"
+
+
+"Question Type: freetext","Parent Category",Category,"Correct Feedback","Incorrect Feedback",Points,Question,"Answer A","Answer B","Answer C","Answer D","Answer E","Answer F","Answer G","Answer H","Answer I","Answer J","Answer K","Answer L","Answer M","Answer N","Answer O","Answer P","Answer Q","Answer R","Answer S","Answer T"
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testAddNaN() {
+[color=#008000]        // x represents a complex number (복소수 in Korean), 3.0 + 4.0i[/color]
+        Complex x = new Complex(3.0, 4.0);
+
+[color=#008000]        // z represents a complex number (복소수 in Korean), 1+ (NaN)i[/color]
+        Complex z = new Complex(1, Double.NaN);
+
+[color=#008000]        // Perform w = x + z[/color]
+[color=#008000]        // Note that (3.0 + 4.0i) + (1+ (NaN)i) = NaN + (NaN)i[/color]
+        Complex w = x.add(z);
+
+[color=#008000]        // w.getReal() returns the real part (실수부) of w[/color]
+[color=#008000]        // w.getImaginary() returns the imaginary part (허수부) of w[/color]
+        assertTrue(Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary()));
+}
+
+The above test checks whether the addition between two complex numbers (복소수 in Korean) is performed correctly. 
+
+It turns out that the current buggy implementation produces an incorrect output when NaN is involved in the addition, and the above test fails because of this reason. When NaN is not involved, the addition performs correctly in the current implementation. That is, the following property is satisfied for two complex numbers, (a + bi) and (c + di) where a, b, c, and d are real numbers:
+
+(a + bi) + (c + di) = (a+c) + (b+d)i
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testAddNaN(double a, double b, double c, double d) {
+        Complex x = new Complex(a, b);
+        Complex z = new Complex(c, d);
+        Complex w = x.add(z);
+
+        [color=#FF0000]// Fill in the following blank with a boolean expression.
+        // Note that the following condition will become false, if the patch is incorrect.[/color][color=#ff0000]        [/color]
+        assertTrue([color=#ff0000]_____________________________[/color]);
+    }","(w.getReal() == x.getReal() + z.getReal()) && (w.getImaginary() == x.getImaginary() + z.getImaginary())","w.getReal() == (a + c) && w.getImaginary() ==(b+d)"
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+[color=#008000]// IllegalArgumentException is expected to be thrown[/color]
+@Test(expected = IllegalArgumentException.class)
+public void testBadEndpoints() throws Exception {
+[color=#008000]        // f refers to the sin function[/color]
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver brentSolver = new BrentSolver();
+
+[color=#008000]        // E[/color][color=#008000]xecuting the following line should cause an exception.[/color]
+        brentSolver.solve([color=#008000]/* function */[/color] f, [color=#008000]/* min */[/color] 1, [color=#008000]/* max */[/color] 1.5, [color=#008000]/* initial */[/color] 1.2);
+}
+
+In the above test, the solve method (i.e., brentSolver.solve) takes the following 4 parameters:
+
+1. f: a function to solve
+2. min: the lower bound for the interval
+3. max: the upper bound for the interval
+4. initial: an initial value
+
+The solve method finds the root of function f (in Korean: 함수 f의 해) between the interval [min, max], using the given initial value as the starting point.
+
+Note that brentSolver.solve(f, min, max, initial) should throw IllegalArgumentException, when f(min), f(max), and f(initial) have the same sign (i.e., either all three values are positive or all three values are negative). Meanwhile, if f(min), f(max), and f(initial) do not have the same sign, IllegalArgumentException is not thrown.
+
+In the above test, function f refers to the sin function, and sin(1) = 0.8414709848, sign(1.5) = 0.9974949866, and sin(1.2) = 0.93203908596. Since all three values are positive, IllegalArgumentException should be thrown. However, IllegalArgumentException is not thrown in the current buggy implementation, and the test fails. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete the test by filling in the two underlined blanks. [b][u]In your answer, separate the two boolean conditions with a comma (e.g., x > 0, x < 0 if two boolean conditions are x > 0 and x< 0).[/u][/b]
+
+Note that given a function f of the UnivariateRealFunction type and an arbitrary input x to function f, f(x) can be computed through f.value(x).
+
+public void testBadEndpoints(int min,int max, int initial) throws Exception {
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver solver = new BrentSolver();
+        try {
+            double root = solver.solve(f, min, max, initial);
+
+[color=#ff0000]             // Fill in the following blank with a boolean expression.
+             // Note that the following condition will become false, if the patch is incorrect.      [/color]
+             assertTrue([color=#ff0000]_____________________________[/color]);
+        } catch (IllegalArgumentException e) {
+[color=#ff0000]            // Fill in the following blank with a boolean expression.
+            // Note that the following condition will become false, if the patch is incorrect.      [/color]
+             assertTrue(_____________________________);
+        }
+}","!((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && yInitial < 0)) && f.value(root) == 0, (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)","!((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && yInitial < 0)) && Math.abs(f.value(root)) < 1E-5, (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testSSENonNegative() {
+
+[color=#008000]   // Data points used for regression[/color]
+   double[] x = { 1.107178495E2, 1.107264895E2, 1.107351295E2 };
+   double[] y = { 8915.102, 8919.302, 8923.502 };
+
+[color=#008000]   // With SimpleRegression, we perform a linear regression.[/color]
+   SimpleRegression reg = new SimpleRegression();
+
+[color=#008000]   // We find a linear regression model that fits the data best.[/color]
+   for (int i = 0; i < x.length; i++) {         
+         reg.addData(x[i], y[i]);
+   }
+
+[color=#008000]    // The following assertion fails in the buggy version.[/color]
+    assertTrue(reg.getSumSquaredErrors() >= 0.0);
+}
+
+In the above test, getSumSquaredErrors() returns the sum of squared errors (SSE) of the obtained linear regression model. Note that SSE can be calculated using the following formula:
+
+[cmimg]0/9677397_Q28N2W59.jpeg[/cmimg]
+
+In the above formula, x and y correspond to the array x and y of the failing test testSSENonNegative. For example, x[0] is 1.107178495E2 and y[0] is 8915.102. Meanwhile, notation f refers to the obtained regression model. Note that in the implementation, f(x[i]) can be obtained through reg.predict(x[i]) where reg refers to a SimpleRegression object. 
+
+SSE should always be non-negative, and the current buggy implementation fails to satisfy this condition for the given test. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testSSENonNegative(double d1, double d2, double d3,
+   double d4, double d5, double d6) {
+
+   [color=#008000]// Data points used for regression[/color]
+   double[] x = { d1, d2, d3 };
+   double[] y = { d4, d5, d6 };
+
+   SimpleRegression reg = new SimpleRegression();
+   for (int i = 0; i < x.length; i++) {
+         reg.addData(x[i], y[i]);
+   }
+
+   final double sse = reg.getSumSquaredErrors();
+    
+[color=#ff0000]   // Fill in the following blank with a boolean expression.
+   // Note that the following condition will become false, if the patch is incorrect.[/color]
+[color=#ff0000]   // Also note that the original assertion condition, reg.getSumSquaredErrors() >= 0.0, [/color]
+[color=#ff0000]   // is not strong enough since an incorrect patch can also satisfy [/color]
+[color=#ff0000]   // reg.getSumSquaredErrors() >= 0.0.
+[/color]   assertTrue([color=#ff0000]_______________________[/color]);
+}","sse >= 0.0 && Math.abs((reg.predict(x[0]) - y[0]) * (reg.predict(x[0]) - y[0]) + (reg.predict(x[1]) - y[1]) * (reg.predict(x[1]) - y[1]) + (reg.predict(x[2]) - y[2]) * (reg.predict(x[2]) - y[2]) - sse) < 1E-10","sse >= 0.0 && (reg.predict(x[0]) - y[0]) * (reg.predict(x[0]) - y[0]) + (reg.predict(x[1]) - y[1]) * (reg.predict(x[1]) - y[1]) + (reg.predict(x[2]) - y[2]) * (reg.predict(x[2]) - y[2]) == sse"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testAddNaN() {
+      [color=#008000]  // x represents a complex number (복소수 in Korean), 3.0 + 4.0i[/color]
+        Complex x = new Complex(3.0, 4.0);
+
+      [color=#008000]  // z represents a complex number (복소수 in Korean), 1+ (NaN)i[/color]
+        Complex z = new Complex(1, Double.NaN);
+
+        [color=#008000]// Perform w = x + z
+        // Note that (3.0 + 4.0i) + (1+ (NaN)i) = NaN + (NaN)i[/color]
+        Complex w = x.add(z);
+
+       [color=#008000] // w.getReal() returns the real part (실수부) of w
+        // w.getImaginary() returns the imaginary part (허수부) of w[/color]
+        assertTrue(Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary()));
+}
+
+The above test checks whether the addition between two complex numbers (복소수 in Korean) is performed correctly. 
+
+It turns out that the current buggy implementation produces an incorrect output when NaN is involved in the addition, and the above test fails because of this reason. When NaN is not involved, the addition performs correctly in the current implementation. That is, the following property is satisfied for two complex numbers, (a + bi) and (c + di) where a, b, c, and d are real numbers:
+
+(a + bi) + (c + di) = (a+c) + (b+d)i
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testAddNaN(double a, double b, double c, double d) {
+[color=#008000]        // We make sure that NaN is not used.[/color]
+        Assume.assumeTrue(a != Double.NaN && b != Double.NaN
+                                           && c != Double.NaN && d != Double.NaN);
+
+        Complex x = new Complex(a, b);
+        Complex z = new Complex(c, d);
+
+[color=#008000]        // Perform w = x + z[/color]
+        Complex w = x.add(z);
+
+        [color=#FF0000] // Fill in the following blank with a boolean expression.
+         // Note that under the given condition, the original version is assumed to [/color]
+[color=#FF0000]         // run correctly, and we expect that the same output will be produced [/color]
+[color=#FF0000]         // from the patched version.[/color]
+         assertSameOutIf([color=#ff0000]_________________[/color], 
+                                     [color=#008000]/* output */ [/color]Double[]{ w.getReal(), w.getImaginary() });
+}",true
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testSSENonNegative() {
+
+[color=#008000]   // Data points used for regression[/color]
+   double[] x = { 1.107178495E2, 1.107264895E2, 1.107351295E2 };
+   double[] y = { 8915.102, 8919.302, 8923.502 };
+
+[color=#008000]   // With SimpleRegression, we perform a linear regression.[/color]
+   SimpleRegression reg = new SimpleRegression();
+
+[color=#008000]   // We find a linear regression model that fits the data best.[/color]
+   for (int i = 0; i < x.length; i++) {         
+         reg.addData(x[i], y[i]);
+   }
+
+[color=#008000]    // The following assertion fails in the buggy version.[/color]
+    assertTrue(reg.getSumSquaredErrors() >= 0.0);
+}
+
+In the above test, getSumSquaredErrors() returns the sum of squared errors (SSE) of the obtained linear regression model. Note that SSE can be calculated using the following formula:
+
+[cmimg]0/9677397_Q28N2W59.jpeg[/cmimg]
+
+In the above formula, x and y correspond to the array x and y of the failing test testSSENonNegative. For example, x[0] is 1.107178495E2 and y[0] is 8915.102. Meanwhile, notation f refers to the obtained regression model. Note that in the implementation, f(x[i]) can be obtained through reg.predict(x[i]) where reg refers to a SimpleRegression object. 
+
+SSE should always be non-negative, and the current buggy implementation fails to satisfy this condition for the given test. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testSSENonNegative(double d1, double d2, double d3,
+   double d4, double d5, double d6) {
+
+   [color=#008000]// Data points used for regression[/color]
+   double[] x = { d1, d2, d3 };
+   double[] y = { d4, d5, d6 };
+
+   SimpleRegression reg = new SimpleRegression();
+   for (int i = 0; i < x.length; i++) {
+         reg.addData(x[i], y[i]);
+   }
+
+   final double sse = reg.getSumSquaredErrors();
+    
+[color=#ff0000]   // Fill in the following blank with a boolean expression.
+   // Note that the following condition will become false, if the patch is incorrect.[/color]
+[color=#ff0000]   // Also note that the original assertion condition, reg.getSumSquaredErrors() >= 0.0, [/color]
+[color=#ff0000]   // is not strong enough since an incorrect patch can also satisfy [/color]
+[color=#ff0000]   // reg.getSumSquaredErrors() >= 0.0.
+[/color]   assertTrue([color=#ff0000]_______________________[/color]);
+}","sse >= 0.0 && Math.abs((reg.predict(x[0]) - y[0]) * (reg.predict(x[0]) - y[0]) + (reg.predict(x[1]) - y[1]) * (reg.predict(x[1]) - y[1]) + (reg.predict(x[2]) - y[2]) * (reg.predict(x[2]) - y[2]) - sse) < 1E-10","sse >= 0.0 && (reg.predict(x[0]) - y[0]) * (reg.predict(x[0]) - y[0]) + (reg.predict(x[1]) - y[1]) * (reg.predict(x[1]) - y[1]) + (reg.predict(x[2]) - y[2]) * (reg.predict(x[2]) - y[2]) == sse"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+
+[color=#008000]// IllegalArgumentException is expected to be thrown[/color]
+@Test(expected = IllegalArgumentException.class)
+public void testBadEndpoints() throws Exception {
+        [color=#008000]// f refers to a sin function[/color]
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver brentSolver = new BrentSolver();
+
+        [color=#008000]// Executing the following line should cause an exception.[/color]
+        brentSolver.solve([color=#008000]/* function */[/color] f, [color=#008000]/* min */[/color] 1, [color=#008000]/* max */[/color] 1.5, [color=#008000]/* initial */[/color] 1.2);
+}
+
+
+In the above test, the solve method (i.e., brentSolver.solve) takes the following 4 parameters:
+
+1. f: a function to solve
+2. min: the lower bound for the interval
+3. max: the upper bound for the interval
+4. initial: an initial value
+
+The solve method finds the root of function f (in Korean: 함수 f의 해) between the interval [min, max], using the given initial value as the starting point.
+
+Note that brentSolver.solve(f, min, max, initial) should throw IllegalArgumentException, when f(min), f(max), and f(initial) have the same sign (i.e., either all three values are positive or all three values are negative). Meanwhile, if f(min), f(max), and f(initial) do not have the same sign, IllegalArgumentException is not thrown.
+
+In the above test, function f refers to the sin function, and sin(1) = 0.8414709848, sin(1.5) = 0.9974949866, and sin(1.2) = 0.93203908596. Since all three values are positive, IllegalArgumentException should be thrown. However, IllegalArgumentException is not thrown in the current buggy implementation, and the test fails. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete the test by filling in the two underlined blanks. [b][u]In your answer, separate the two boolean conditions with a comma (e.g., x > 0, x < 0 if two boolean conditions are x > 0 and x< 0).[/u][/b]
+
+Note that given a function f of the UnivariateRealFunction type and an arbitrary input x to function f, f(x) can be computed through f.value(x).
+    
+public void testBadEndpoints(int min,int max, int initial) throws Exception {
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver brentSolver = new BrentSolver();
+        try {
+            double root = brentSolver.solve(f, min, max, initial);
+[color=#ff0000]            // Fill in the following blank with a boolean expression.
+            // Note that under the given condition, the original version is assumed to 
+            // run correctly, and we expect that the same output will be produced 
+            // from the patched version.[/color]
+            assertSameOutIf([color=#FF0000]_________________[/color], [color=#008000]/* output */[/color] root);
+        } catch (IllegalArgumentException ex) {
+[color=#ff0000]            // Fill in the following blank with a boolean expression.[/color]
+[color=#ff0000]            // Note that under the given condition, the original version is assumed to 
+            // run correctly, and we expect that the same output will be produced 
+            // from the patched version.[/color]
+            assertSameOutIf([color=#FF0000]_________________[/color], [color=#008000]/* output */[/color] ""IllegalArgumentException"");
+        }
+}","!((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)), (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testSSENonNegative() {
+
+   [color=#008000]// Data points used for regression[/color]
+   double[] x = { 1.107178495E2, 1.107264895E2, 1.107351295E2 };
+   double[] y = { 8915.102, 8919.302, 8923.502 };
+
+   [color=#008000]// With SimpleRegression, we perform a linear regression.[/color]
+   SimpleRegression reg = new SimpleRegression();
+
+[color=#008000]   // We find a linear regression model that fits the data best.[/color]
+   for (int i = 0; i < x.length; i++) {         
+         reg.addData(x[i], y[i]);
+   }
+
+    [color=#008000]// The following assertion fails in the buggy version.[/color]
+    assertTrue(reg.getSumSquaredErrors() >= 0.0);
+}
+
+In the above test, getSumSquaredErrors() returns the sum of squared errors (SSE) of the obtained linear regression model. Note that SSE can be calculated using the following formula:
+
+[cmimg]0/9677397_Q28N2W59.jpeg[/cmimg]
+
+In the above formula, x and y correspond to the array x and y of the failing test testSSENonNegative. For example, x[0] is 1.107178495E2 and y[0] is 8915.102. Meanwhile, notation f refers to the obtained regression model. 
+
+SSE should always be non-negative, and the current buggy implementation fails to satisfy this condition for the given test. Meanwhile, when reg.getSumSquaredErrors() returns a positive value as expected, the current implementation produces the correct SSE value. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testSSENonNegative(double d1, double d2, double d3,
+   double d4, double d5, double d6) {
+
+[color=#008000]   // Data points used for regression[/color]
+   double[] x = { d1, d2, d3 };
+   double[] y = { d4, d5, d6 };
+
+   SimpleRegression reg = new SimpleRegression();
+   for (int i = 0; i < x.length; i++) {
+         reg.addData(x[i], y[i]);
+   }
+
+   final double sse = reg.getSumSquaredErrors();
+   
+[color=#ff0000]   // Fill in the following blank with a boolean expression.
+   // Note that under the given condition, the original version is assumed to 
+   // run correctly, and we expect that the same output will be produced 
+   // from the patched version.[/color]
+   assertSameOutIf([color=#ff0000]_________________[/color],  [color=#008000]/* output */[/color] sse);
+}","sse >= 0.0",sse>=0
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer. ",1,"Suppose that the following test fails in the buggy version:
+
+public void testMath1021() {
+     final int N = 43130568;
+     final int m = 42976365;
+     final int n = 50;
+     double p = 0.8955874687296737;
+
+     final HypergeometricDistribution dist = new HypergeometricDistribution(N, m, n);
+     final int sample = dist.inverseCumulativeProbability(p);
+     assertTrue(0 <= sample);
+}
+
+It turns out that the test fails when dist.getNumericalMean() returns a negative number. Otherwise (i.e., when dist.getNumericalMean() does not return a negative number), dist.inverseCumulativeProbability(p) returns a correct output.
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+
+public void testMath1021(int sampleSize, int n, int popSize, double p) {
+    [color=#008000]// We make sure that sampleSize is not greater than popSize.[/color]
+    assumeTrue(sampleSize <= popSize);
+    [color=#008000]// We make sure that 0 < p <= 1.[/color]
+    assumeTrue(p > 0 && p <= 1);
+
+    HypergeometricDistribution dist = new HypergeometricDistribution(popSize, sampleSize, n);
+    final int sample = dist.inverseCumulativeProbability(p);
+
+[color=#ff0000]    // Fill in the following blank with a boolean expression.[/color]
+[color=#ff0000]    // Note that the following condition will become false, if the patch is incorrect. [/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // You may use the following [/color][color=#ff0000]description about inverseCumulativeProbability:[/color]
+[color=#ff0000]    // [/color]
+[color=#ff0000]    // When 0 < p <= 1, the return value of inverseCumulativeProbability is[/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // inf{x in R | P(X<=x) >= p}[/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // where inf and R represent infimum and a set of real numbers.  [/color]
+[color=#ff0000]    // [/color]
+[color=#ff0000]    // If you do not know what an infimum is, take a look at the following examples of an infimum:[/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // e.g.  inf{1, 2, 3, ...} = 1[/color]
+[color=#ff0000]    // e.g.  inf{x in R | 0 < x < 1} = 0[/color]
+[color=#ff0000]    // [/color]
+[color=#ff0000]    // Note that P(X <= x) can be obtained by calling dist.cumulativeProbability(x)
+[/color]    assertTrue([color=#ff0000]_____________________________[/color]);
+}","(dist.cumulativeProbability(sample) >= p) && !(dist.cumulativeProbability(sample - 1) >= p)"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+
+[color=#008000]// IllegalArgumentException is expected to be thrown[/color]
+@Test(expected = IllegalArgumentException.class)
+public void testBadEndpoints() throws Exception {
+        [color=#008000]// f refers to a sin function[/color]
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver brentSolver = new BrentSolver();
+
+        [color=#008000]// Executing the following line should cause an exception.[/color]
+        brentSolver.solve([color=#008000]/* function */[/color] f, [color=#008000]/* min */[/color] 1, [color=#008000]/* max */[/color] 1.5, [color=#008000]/* initial */[/color] 1.2);
+}
+
+
+In the above test, the solve method (i.e., brentSolver.solve) takes the following 4 parameters:
+
+1. f: a function to solve
+2. min: the lower bound for the interval
+3. max: the upper bound for the interval
+4. initial: an initial value
+
+The solve method finds the root of function f (in Korean: 함수 f의 해) between the interval [min, max], using the given initial value as the starting point.
+
+Note that brentSolver.solve(f, min, max, initial) should throw IllegalArgumentException, when f(min), f(max), and f(initial) have the same sign (i.e., either all three values are positive or all three values are negative). Meanwhile, if f(min), f(max), and f(initial) do not have the same sign, IllegalArgumentException is not thrown.
+
+In the above test, function f refers to the sin function, and sin(1) = 0.8414709848, sin(1.5) = 0.9974949866, and sin(1.2) = 0.93203908596. Since all three values are positive, IllegalArgumentException should be thrown. However, IllegalArgumentException is not thrown in the current buggy implementation, and the test fails. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete the test by filling in the two underlined blanks. [b][u]In your answer, separate the two boolean conditions with a comma (e.g., x > 0, x < 0 if two boolean conditions are x > 0 and x< 0).[/u][/b]
+
+Note that given a function f of the UnivariateRealFunction type and an arbitrary input x to function f, f(x) can be computed through f.value(x).
+    
+public void testBadEndpoints(int min,int max, int initial) throws Exception {
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver brentSolver = new BrentSolver();
+        try {
+            double root = brentSolver.solve(f, min, max, initial);
+[color=#ff0000]            // Fill in the following blank with a boolean expression.
+            // Note that under the given condition, the original version is assumed to 
+            // run correctly, and we expect that the same output will be produced 
+            // from the patched version.[/color]
+            assertSameOutIf([color=#FF0000]_________________[/color], [color=#008000]/* output */[/color] root);
+        } catch (IllegalArgumentException ex) {
+[color=#ff0000]            // Fill in the following blank with a boolean expression.[/color]
+[color=#ff0000]            // Note that under the given condition, the original version is assumed to 
+            // run correctly, and we expect that the same output will be produced 
+            // from the patched version.[/color]
+            assertSameOutIf([color=#FF0000]_________________[/color], [color=#008000]/* output */[/color] ""IllegalArgumentException"");
+        }
+}","!((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)), (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer. ",1,"Suppose that the following test fails in the buggy version. 
+
+public void testLogZero() {
+   double y = MyMath.log2(0);
+    assertTrue(y == Double.NEGATIVE_INFINITY);
+}
+
+
+The current buggy implementation throws an exception unexpectedly. Assume that for other input, MyMath.log2 returns correct output.
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete the test by filling in the underlined blank. 
+
+Note that b to the nth power (in Korean, b의 n승) can be computed through MyMath.pow(b, n).
+
+public void testLogZero(double x) {
+    assumeTrue(x > 0);
+  
+    double y = MyMath.log2(x);
+    
+    [color=#ff0000]// Fill in the following blank with a boolean expression.
+    // Note that the following condition will become false, if the patch is incorrect. [/color]
+    assertTrue([color=#ff0000]___________________[/color]);
+}","x == MyMath.pow(2, y)"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testAddNaN() {
+      [color=#008000]  // x represents a complex number (복소수 in Korean), 3.0 + 4.0i[/color]
+        Complex x = new Complex(3.0, 4.0);
+
+      [color=#008000]  // z represents a complex number (복소수 in Korean), 1+ (NaN)i[/color]
+        Complex z = new Complex(1, Double.NaN);
+
+        [color=#008000]// Perform w = x + z
+        // Note that (3.0 + 4.0i) + (1+ (NaN)i) = NaN + (NaN)i[/color]
+        Complex w = x.add(z);
+
+       [color=#008000] // w.getReal() returns the real part (실수부) of w
+        // w.getImaginary() returns the imaginary part (허수부) of w[/color]
+        assertTrue(Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary()));
+}
+
+The above test checks whether the addition between two complex numbers (복소수 in Korean) is performed correctly. 
+
+It turns out that the current buggy implementation produces an incorrect output when NaN is involved in the addition, and the above test fails because of this reason. When NaN is not involved, the addition performs correctly in the current implementation. That is, the following property is satisfied for two complex numbers, (a + bi) and (c + di) where a, b, c, and d are real numbers:
+
+(a + bi) + (c + di) = (a+c) + (b+d)i
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testAddNaN(double a, double b, double c, double d) {
+[color=#008000]        // We make sure that NaN is not used.[/color]
+        Assume.assumeTrue(a != Double.NaN && b != Double.NaN
+                                           && c != Double.NaN && d != Double.NaN);
+
+        Complex x = new Complex(a, b);
+        Complex z = new Complex(c, d);
+
+[color=#008000]        // Perform w = x + z[/color]
+        Complex w = x.add(z);
+
+        [color=#FF0000] // Fill in the following blank with a boolean expression.
+         // Note that under the given condition, the original version is assumed to [/color]
+[color=#FF0000]         // run correctly, and we expect that the same output will be produced [/color]
+[color=#FF0000]         // from the patched version.[/color]
+         assertSameOutIf([color=#ff0000]_________________[/color], 
+                                     [color=#008000]/* output */ [/color]Double[]{ w.getReal(), w.getImaginary() });
+}",true
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+[color=#008000]// IllegalArgumentException is expected to be thrown[/color]
+@Test(expected = IllegalArgumentException.class)
+public void testBadEndpoints() throws Exception {
+[color=#008000]        // f refers to the sin function[/color]
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver brentSolver = new BrentSolver();
+
+[color=#008000]        // E[/color][color=#008000]xecuting the following line should cause an exception.[/color]
+        brentSolver.solve([color=#008000]/* function */[/color] f, [color=#008000]/* min */[/color] 1, [color=#008000]/* max */[/color] 1.5, [color=#008000]/* initial */[/color] 1.2);
+}
+
+In the above test, the solve method (i.e., brentSolver.solve) takes the following 4 parameters:
+
+1. f: a function to solve
+2. min: the lower bound for the interval
+3. max: the upper bound for the interval
+4. initial: an initial value
+
+The solve method finds the root of function f (in Korean: 함수 f의 해) between the interval [min, max], using the given initial value as the starting point.
+
+Note that brentSolver.solve(f, min, max, initial) should throw IllegalArgumentException, when f(min), f(max), and f(initial) have the same sign (i.e., either all three values are positive or all three values are negative). Meanwhile, if f(min), f(max), and f(initial) do not have the same sign, IllegalArgumentException is not thrown.
+
+In the above test, function f refers to the sin function, and sin(1) = 0.8414709848, sign(1.5) = 0.9974949866, and sin(1.2) = 0.93203908596. Since all three values are positive, IllegalArgumentException should be thrown. However, IllegalArgumentException is not thrown in the current buggy implementation, and the test fails. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete the test by filling in the two underlined blanks. [b][u]In your answer, separate the two boolean conditions with a comma (e.g., x > 0, x < 0 if two boolean conditions are x > 0 and x< 0).[/u][/b]
+
+Note that given a function f of the UnivariateRealFunction type and an arbitrary input x to function f, f(x) can be computed through f.value(x).
+
+public void testBadEndpoints(int min,int max, int initial) throws Exception {
+        UnivariateRealFunction f = new SinFunction();
+        BrentSolver solver = new BrentSolver();
+        try {
+            double root = solver.solve(f, min, max, initial);
+
+[color=#ff0000]             // Fill in the following blank with a boolean expression.
+             // Note that the following condition will become false, if the patch is incorrect.      [/color]
+             assertTrue([color=#ff0000]_____________________________[/color]);
+        } catch (IllegalArgumentException e) {
+[color=#ff0000]            // Fill in the following blank with a boolean expression.
+            // Note that the following condition will become false, if the patch is incorrect.      [/color]
+             assertTrue(_____________________________);
+        }
+}","!((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && yInitial < 0)) && f.value(root) == 0, (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)","!((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && yInitial < 0)) && Math.abs(f.value(root)) < 1E-5, (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer. ",1,"Suppose that the following test fails in the buggy version. 
+
+public void testLogZero() {
+   double y = MyMath.log2(0);
+   assertTrue(y == Double.NEGATIVE_INFINITY);
+}
+
+The current buggy implementation throws an exception unexpectedly. Assume that for other input, MyMath.log2 returns correct output.
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete the test by filling in the underlined blank. 
+
+Note that b to the nth power (in Korean, b의 n승) can be computed through MyMath.pow(b, n).
+
+public void testLogZero(double x) {
+    assumeTrue(x > 0);
+    double y = MyMath.log2(x);
+
+[color=#ff0000]    // Fill in the following blank with a boolean expression.
+    // Note that under the given condition, the original version is assumed to 
+    // run correctly, and we expect that the same output will be produced 
+    // from the patched version. [/color]
+    assertSameOutIf([color=#ff0000]___________________[/color], y);
+}",true
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer. ",1,"Suppose that the following test fails in the buggy version:
+
+public void testMath1021() {
+     final int N = 43130568;
+     final int m = 42976365;
+     final int n = 50;
+     double p = 0.8955874687296737;
+
+     final HypergeometricDistribution dist = new HypergeometricDistribution(N, m, n);
+     final int sample = dist.inverseCumulativeProbability(p);
+     assertTrue(0 <= sample);
+}
+
+It turns out that the test fails when dist.getNumericalMean() returns a negative number. Otherwise (i.e., when dist.getNumericalMean() does not return a negative number), dist.inverseCumulativeProbability(p) returns a correct output.
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+
+public void testMath1021(int sampleSize, int n, int popSize, double p) {
+    [color=#008000]// We make sure that sampleSize is not greater than popSize.[/color]
+    assumeTrue(sampleSize <= popSize);
+    [color=#008000]// We make sure that 0 < p <= 1.[/color]
+    assumeTrue(p > 0 && p <= 1);
+
+    HypergeometricDistribution dist = new HypergeometricDistribution(popSize, sampleSize, n);
+    final int sample = dist.inverseCumulativeProbability(p);
+
+[color=#ff0000]    // Fill in the following blank with a boolean expression.[/color]
+[color=#ff0000]    // Note that the following condition will become false, if the patch is incorrect. [/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // You may use the following [/color][color=#ff0000]description about inverseCumulativeProbability:[/color]
+[color=#ff0000]    // [/color]
+[color=#ff0000]    // When 0 < p <= 1, the return value of inverseCumulativeProbability is[/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // inf{x in R | P(X<=x) >= p}[/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // where inf and R represent infimum and a set of real numbers.  [/color]
+[color=#ff0000]    // [/color]
+[color=#ff0000]    // If you do not know what an infimum is, take a look at the following examples of an infimum:[/color]
+[color=#ff0000]    //[/color]
+[color=#ff0000]    // e.g.  inf{1, 2, 3, ...} = 1[/color]
+[color=#ff0000]    // e.g.  inf{x in R | 0 < x < 1} = 0[/color]
+[color=#ff0000]    // [/color]
+[color=#ff0000]    // Note that P(X <= x) can be obtained by calling dist.cumulativeProbability(x)
+[/color]    assertTrue([color=#ff0000]_____________________________[/color]);
+}","(dist.cumulativeProbability(sample) >= p) && !(dist.cumulativeProbability(sample - 1) >= p)"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer. ",1,"Suppose that the following test fails in the buggy version:
+
+public void testMath1021() {
+     final int N = 43130568;
+     final int m = 42976365;
+     final int n = 50;
+     double p = 0.8955874687296737;
+
+     final HypergeometricDistribution dist = new HypergeometricDistribution(N, m, n);
+     final int sample = dist.inverseCumulativeProbability(p);
+     Assert.assertTrue(0 <= sample);
+}
+
+It turns out that the test fails when dist.getNumericalMean() returns a negative number. Otherwise (i.e., when dist.getNumericalMean() does not return a negative number), dist.inverseCumulativeProbability(p) returns a correct output.
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testMath1021(int sampleSize, int n, int popSize, double p) {
+     [color=#008000]// We make sure that sampleSize is not greater than popSize.[/color]
+     assumeTrue(sampleSize <= popSize);
+     [color=#008000]// We make sure that p > 0 and p <= 1.[/color]
+     assumeTrue(p > 0 && p <= 1);
+     
+     HypergeometricDistribution dist = 
+           new HypergeometricDistribution(popSize, sampleSize, n);
+     int sample = dist.inverseCumulativeProbability(p);
+      
+[color=#ff0000]      // Fill in the following blank with a boolean expression.
+      // Note that under the given condition, the original version is assumed to run correctly,
+      // and we expect that the same output will be produced from the patched version.[/color]
+      assertSameOutIf([color=#ff0000]_________________[/color],  [color=#008000]/* output */[/color] sample);
+}","dist.getNumericalMean() >= 0","dist.getNumericalMean() >=0",dist.getNumericalMean()>=0,"dist.getNumericalMean()>= 0"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer. ",1,"Suppose that the following test fails in the buggy version:
+
+public void testMath1021() {
+     final int N = 43130568;
+     final int m = 42976365;
+     final int n = 50;
+     double p = 0.8955874687296737;
+
+     final HypergeometricDistribution dist = new HypergeometricDistribution(N, m, n);
+     final int sample = dist.inverseCumulativeProbability(p);
+     Assert.assertTrue(0 <= sample);
+}
+
+It turns out that the test fails when dist.getNumericalMean() returns a negative number. Otherwise (i.e., when dist.getNumericalMean() does not return a negative number), dist.inverseCumulativeProbability(p) returns a correct output.
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testMath1021(int sampleSize, int n, int popSize, double p) {
+     [color=#008000]// We make sure that sampleSize is not greater than popSize.[/color]
+     assumeTrue(sampleSize <= popSize);
+     [color=#008000]// We make sure that p > 0 and p <= 1.[/color]
+     assumeTrue(p > 0 && p <= 1);
+     
+     HypergeometricDistribution dist = 
+           new HypergeometricDistribution(popSize, sampleSize, n);
+     int sample = dist.inverseCumulativeProbability(p);
+      
+[color=#ff0000]      // Fill in the following blank with a boolean expression.
+      // Note that under the given condition, the original version is assumed to run correctly,
+      // and we expect that the same output will be produced from the patched version.[/color]
+      assertSameOutIf([color=#ff0000]_________________[/color],  [color=#008000]/* output */[/color] sample);
+}","dist.getNumericalMean() >= 0","dist.getNumericalMean() >=0",dist.getNumericalMean()>=0,"dist.getNumericalMean()>= 0"
+freetext,"Generic Parent","Method 1","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testAddNaN() {
+[color=#008000]        // x represents a complex number (복소수 in Korean), 3.0 + 4.0i[/color]
+        Complex x = new Complex(3.0, 4.0);
+
+[color=#008000]        // z represents a complex number (복소수 in Korean), 1+ (NaN)i[/color]
+        Complex z = new Complex(1, Double.NaN);
+
+[color=#008000]        // Perform w = x + z[/color]
+[color=#008000]        // Note that (3.0 + 4.0i) + (1+ (NaN)i) = NaN + (NaN)i[/color]
+        Complex w = x.add(z);
+
+[color=#008000]        // w.getReal() returns the real part (실수부) of w[/color]
+[color=#008000]        // w.getImaginary() returns the imaginary part (허수부) of w[/color]
+        assertTrue(Double.isNaN(w.getReal()) && Double.isNaN(w.getImaginary()));
+}
+
+The above test checks whether the addition between two complex numbers (복소수 in Korean) is performed correctly. 
+
+It turns out that the current buggy implementation produces an incorrect output when NaN is involved in the addition, and the above test fails because of this reason. When NaN is not involved, the addition performs correctly in the current implementation. That is, the following property is satisfied for two complex numbers, (a + bi) and (c + di) where a, b, c, and d are real numbers:
+
+(a + bi) + (c + di) = (a+c) + (b+d)i
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testAddNaN(double a, double b, double c, double d) {
+        Complex x = new Complex(a, b);
+        Complex z = new Complex(c, d);
+        Complex w = x.add(z);
+
+        [color=#FF0000]// Fill in the following blank with a boolean expression.
+        // Note that the following condition will become false, if the patch is incorrect.[/color][color=#ff0000]        [/color]
+        assertTrue([color=#ff0000]_____________________________[/color]);
+    }","(w.getReal() == x.getReal() + z.getReal()) && (w.getImaginary() == x.getImaginary() + z.getImaginary())","w.getReal() == (a + c) && w.getImaginary() ==(b+d)"
+freetext,"Generic Parent","Method 2","Good job! You submitted a correct answer.","Thanks for submitting an answer! Don't worry about whitespace differences. We will manually check your answer.",1,"Suppose that the following test fails in the buggy version:
+
+public void testSSENonNegative() {
+
+   [color=#008000]// Data points used for regression[/color]
+   double[] x = { 1.107178495E2, 1.107264895E2, 1.107351295E2 };
+   double[] y = { 8915.102, 8919.302, 8923.502 };
+
+   [color=#008000]// With SimpleRegression, we perform a linear regression.[/color]
+   SimpleRegression reg = new SimpleRegression();
+
+[color=#008000]   // We find a linear regression model that fits the data best.[/color]
+   for (int i = 0; i < x.length; i++) {         
+         reg.addData(x[i], y[i]);
+   }
+
+    [color=#008000]// The following assertion fails in the buggy version.[/color]
+    assertTrue(reg.getSumSquaredErrors() >= 0.0);
+}
+
+In the above test, getSumSquaredErrors() returns the sum of squared errors (SSE) of the obtained linear regression model. Note that SSE can be calculated using the following formula:
+
+[cmimg]0/9677397_Q28N2W59.jpeg[/cmimg]
+
+In the above formula, x and y correspond to the array x and y of the failing test testSSENonNegative. For example, x[0] is 1.107178495E2 and y[0] is 8915.102. Meanwhile, notation f refers to the obtained regression model. 
+
+SSE should always be non-negative, and the current buggy implementation fails to satisfy this condition for the given test. Meanwhile, when reg.getSumSquaredErrors() returns a positive value as expected, the current implementation produces the correct SSE value. 
+
+Now suppose that we have a patch for this bug, and we are going to use the following test to validate this patch. Complete this test by filling in the underlined blank.
+
+public void testSSENonNegative(double d1, double d2, double d3,
+   double d4, double d5, double d6) {
+
+[color=#008000]   // Data points used for regression[/color]
+   double[] x = { d1, d2, d3 };
+   double[] y = { d4, d5, d6 };
+
+   SimpleRegression reg = new SimpleRegression();
+   for (int i = 0; i < x.length; i++) {
+         reg.addData(x[i], y[i]);
+   }
+
+   final double sse = reg.getSumSquaredErrors();
+   
+[color=#ff0000]   // Fill in the following blank with a boolean expression.
+   // Note that under the given condition, the original version is assumed to 
+   // run correctly, and we expect that the same output will be produced 
+   // from the patched version.[/color]
+   assertSameOutIf([color=#ff0000]_________________[/color],  [color=#008000]/* output */[/color] sse);
+}","sse >= 0.0",sse>=0
+
+
+"Question Type: multipleresponse","Parent Category",Category,"Random Answers","Grade Style","Correct Feedback","Incorrect Feedback",Points,Question,Correct,"Answer A","Answer B","Answer C","Answer D","Answer E","Answer F","Answer G","Answer H","Answer I","Answer J"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent",Generic,No,Off,,,0,"Rate your knowledge about the language you answered in the previous question.","A,B,C",Beginner,Medium,Proficient
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent",Generic,No,Off,,,0,"Rate your knowledge about JUnit.","A,B,C,D","Never heard of it before","Heard of it, but has not used it","Have used it, but not very familiar with it","Very familiar with it"
+multipleresponse,"Generic Parent",Generic,No,Off,,,0,"How difficult it was for you to write the preservation conditions?","A,B,C,D","Very hard",Hard,Easy,"Very easy"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent",Generic,No,Off,,,0,"How difficult it was for you to write the Oracle?","A,B,C,D","Very hard",Hard,Easy,"Very easy"
+multipleresponse,"Generic Parent",Generic,No,Off,,,1,"How many years of programming experience do you have?","A,B,C,D","1~3 years","4~6 years","7~9 years",">= 10 years"
+multipleresponse,"Generic Parent",Generic,No,Off,,,0,"Which year are you in?","A,B,C,D",1st,2nd,3rd,4th
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"
+multipleresponse,"Generic Parent",Generic,No,Off,,,0,"Rate your knowledge about Java language.","A,B,C,D","Never used it.","Beginner (e.g. have taken an introductory course)","Medium (e.g. have done some small projects with Java)","Proficient (e.g. have experience in developing real-world programs with Java)"
+multipleresponse,"Generic Parent","Method 1",No,Off,,,1,"How easy/difficult did you feel the task was?","A,B,C,D,E","Very easy",Easy,"Neither easy nor difficult",Difficult,"Very difficult"

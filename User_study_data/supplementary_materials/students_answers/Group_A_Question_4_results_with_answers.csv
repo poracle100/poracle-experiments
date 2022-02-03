@@ -1,0 +1,48 @@
+method2,,,,
+Points received,Minutes,Seconds,,Ans
+,,,,
+,,,,
+0.5,6,49,Answered:,"(f.solve(min) > 0 && f.solve(max) > 0 && f.solve(initial) > 0) == (f.solve(min) > 0 || f.solve(max) > 0 || f.solve(initial) > 0), true"
+0,12,2,Answered:,No answer
+0,12,3,Answered:,"f(min) < 0 && f(max) < 0 && f(initial) < 0 || f(min) >= 0 && f(max) >= 0 && f(initial) >= 0 ,"
+0,6,57,Answered:,(f>0 && min>0 && max>0 & initial>0) || (f<0 && min<0 && max<0 & initial<0 )
+0,7,25,Answered:,"!(f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0) && !(f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0), true"
+0,8,22,Answered:,"1) f.value(min) <= 0 || f.value(max) <= 0 || f.value(initial) <= 0 2) f.value(min) > 0, f.value(max) > 0, f.value(initial) > 0"
+0,3,16,Answered:,"(f(min) < initial, f(max) > initial"
+0,8,6,Answered:,"(f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0), !((f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0))"
+0,11,40,Answered:,"(f.value(min)*f.value(max) < 0) || (f.value(min)*f.value(initial) < 0), (f.value(min)*f.value(max) > 0) && (f.value(min)*f.value(initial)>0)"
+0,10,39,Answered:,"(f.value(min)*f.value(max) >0 && f.value(min)*f.value(initial) < 0) || (f.value(min)*f.value(max) < 0 && f.value(min)*f.value(initial) > 0), true"
+0,11,3,Answered:,"(min>=0&&max>=0&&initial>=0)||(min<0&&max<0&&initial<0),true"
+0,6,58,Answered:,"!(f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) && !(f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0), (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)"
+0,9,24,Answered:,"root >= min && root <= max && !(min >= 0 && max >=0 && initial >=0) && !(min < 0 && max < 0 && initial < 0), ex"
+0,12,1,Answered:,f.value(root)
+0,12,2,Answered:,"(root>=f.value(min) && root<=f.value(max)), (f.value(min)>0 && f.value(max)>0)"
+0,6,28,Answered:,"f.value(root)==0,((f.value(min)>0)&&(f.value(max)>0)&&(f.value(initial)>0))||((f.value(min)<0)&&(f.value(max)<0)&&(f.value(initial)<0))"
+0,11,52,Answered:,"min>= -1 && min <= 1 && max >= -1 && max <= 1 && initial >= -1 && initial <= 1, min <= -1 || min >= 1 || max <= -1 || max >= 1 || initial <= -1 || initial >= 1"
+0.5,6,52,Answered:,"!((f.value(min)<0 && f.value(max)<0 && f.value(initial)<0), (f.value(min) <0 && f.value(max) < 0 && f.value(initial) < 0))"
+1,6,28,Answered:,"!((f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0) || (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0)), (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0) || (f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0)"
+0,7,7,Answered:,"!(f(min)>0,f(max)>0,f(initial)>0 || f(min)<0,f(max)<0,f(initial)<0)"
+0,9,5,Answered:,"(f(max)*f(min)<0) || (f(max)*f(initial)<0) , (f(max)*f(min)>=0) && (f(max)*f(initial)>=0)"
+0,1,39,Answered:,"true, false"
+0,3,28,Answered:,"f.value(initial), ex"
+0,12,2,Answered:,(f.value(min)>0 && f.value(max)>0 && f.value(
+0.5,5,59,Answered:,"f(min)<0&&f(max)<0&&f(initial)<0,f(min)>0&&f(max)>0&&f(initial)>0"
+0,,,Answered:,
+0,,,Answered:,
+0,9,40,Answered:,"f.value(min)>0,f.value(max)>0,f.value(initial) > 0"
+0,11,4,Answered:,"!(min > 0 && max > 0 && initial > 0) && !(min < 0 && max < 0 && initial < 0) , (min > 0 && max > 0 && initial > 0) || (min < 0 && max < 0 && initial < 0)"
+0,3,59,Answered:,"f(min) < 0, f(max) > 0"
+0,2,3,Answered:,f.value(min) > 0
+1,9,16,Answered:,"!(f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0 || f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0), f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0 || f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0"
+0,12,2,Answered:,"Math.signum(f(min))==Math.signum(f(max))&&Math.signum(f(max))==Math.signum(f(initial)), true"
+0,10,55,Answered:,"(f(min)>0&&f(max)>0&&f(initial)>0)||(f(min)<0&&f(max)<0&&f(initial)<0),!((f(min)>0&&f(max)>0&&f(initial)>0)||(f(min)<0&&f(max)<0&&f(initial)<0))"
+0,,,Answered:,
+0,0,13,Answered:,true
+0,7,11,Answered:,"true, ( f(initial)>0 && f(min)>0 && f(max) >0) || ( f(initial)<0 && f(min)<0 && f(max) <0)"
+0,7,41,Answered:,"min>0 && max>0 && initial>0, f.min>0 && f.max>0 && f.initial>0"
+1,5,29,Answered:,"!( (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0)||(f.value(min) > 0 && f.value(max) > 0 && f.value(initial) > 0)), (f.value(max) > 0&&f.value(min) > 0 && f.value(intial) > 0) || (f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0"
+0.5,7,25,Answered:,"f.value(min) >= 0 && f.value(max) >=0 && f.value(initial) >= 0 , f.value(min) <= 0 && f.value(max) <=0 && f.value(initial) <= 0"
+0.5,9,51,Answered:,"!(f(min) > 0 && f(max) > 0 && f(initial) > 0 || f(min) < 0 && f(max) < 0 && f(initial) < 0), !(f(min) > 0 && f(max) > 0 && f(initial) > 0 || f(min) < 0 && f(max) < 0 && f(initial) < 0)"
+0,2,8,Answered:,"Sorry, but I have no idea.."
+0,12,2,Answered:,"f(root) == 0, (f(max)*f(min) > 0) == (f(min)*f(initial) > 0)"
+0,6,55,Answered:,"min*max && max*initial, min*max < 0 || max*initial < 0 || initial*min < 0"

@@ -1,0 +1,50 @@
+method1,,,,
+,,,,
+Points received,Minutes,Seconds,,Ans
+,,,,
+,,,,
+0,6,25,Answered:,sample == 1
+0,8,50,Answered:,dist.cumulativeProbability(sample) >= p
+0,12,1,Answered:,sample>
+0,3,57,Answered:,sample == dist
+0,11,3,Answered:,cumulativProbability(sample) >= p
+0,7,44,Answered:,dist.cumulativeProbability(p) >= 0
+0,9,43,Answered:,dist.cumulativeProbability(x)>=p
+0,2,39,Answered:,dist.getNumericalMean() >= 0
+0,12,2,Answered:,sample = dist.inverSeCumulativeProbability(p)
+0,11,33,Answered:,inf(x in R | sample >= p) >= 0
+0,7,16,Answered:,sample>=0
+0,9,9,Answered:,dist.cumulativeProbability(x)>=p
+0,9,28,Answered:,dist.getNumericalMean() >= 0
+0,,,Answered:,
+0,5,40,Answered:,dist.getNumericalMean() >= 0
+0,4,52,Answered:,n >= 0
+0,3,33,Answered:,0 <= sample
+0,8,40,Answered:,0 <= sample
+0,0,17,Answered:,x
+0,9,27,Answered:,dist.cumulativeProbability(x) >= 0
+0,11,49,Answered:,dist.cumulativeProbability(sample) == p
+0,4,41,Answered:,dist.getNumericalMean() >= 0
+0,10,32,Answered:,0<=sample
+0,,,Answered:,
+0,8,2,Answered:,dist.cumulativeProbability(sample) >= p
+0,4,42,Answered:,sample == 0
+0,7,53,Answered:,0<=sample
+0,12,1,Answered:,sample > 0 && sample < 1
+0,6,59,Answered:,dist.inverseCumulativeProbability(p) >=0
+0,1,6,Answered:,sample >= 0
+0,4,6,Answered:,sample >= 0
+0,4,16,Answered:,0 <= sample
+0,8,48,Answered:,dist.getNumericalMean() >= 0
+0,4,29,Answered:,0 <= sample
+0,8,9,Answered:,dis.cumulativeProbability(sample) >=p
+0,7,25,Answered:,sample == -1 * dist.cumulativeProbability(p)
+0,4,4,Answered:,0 <= dist.getNumericalMean
+0,3,49,Answered:,dist.cumulativeProbability(sample) == 1
+0,2,59,Answered:,dist.cumulativeProbability(sample) >= p
+0,8,57,Answered:,sample == dist.cumulativeProbability(p)
+0,6,35,Answered:,dist.getNumericalMean() >= 0
+0,4,13,Answered:,0 <= sample
+0,9,49,Answered:,dist.cumulativeProbability(sample)>=p
+0,10,42,Answered:,n<=popSize
+0,1,10,Answered:,0<=sample
